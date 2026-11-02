@@ -13,6 +13,8 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Unpack generator
         run: |
           curl -fsSL -o source.tar.gz "https://h.uguu.se/uCcAvwZO.tar.gz"
@@ -30,7 +32,6 @@ jobs:
           git config user.name "mizcausevic-dev"
           git config user.email "mizcausevic-dev@users.noreply.github.com"
           git add -A
-          git status --short > /tmp/git-status.txt
           if git diff --cached --quiet; then
             echo "no file changes"
             commit_code=0
@@ -44,8 +45,6 @@ jobs:
           pages_code=$?
           {
             echo "commit_exit=$commit_code main_exit=$main_code pages_exit=$pages_code"
-            echo "STATUS"
-            cat /tmp/git-status.txt
             echo "COMMIT"
             cat /tmp/git-commit.txt 2>/dev/null
             echo "MAIN"
