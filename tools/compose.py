@@ -1,1 +1,1 @@
-SEE_DISK
+"""Original lo-fi keys studies.\n\nContainer lengths were chosen before any note was written. Every study is\n8 bars of 4/4. The file continues from the local source and must be the full module.\n"""
