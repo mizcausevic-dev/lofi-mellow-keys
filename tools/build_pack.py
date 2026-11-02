@@ -39,10 +39,9 @@ from tools.statements import (  # noqa: E402
 from tools.validate import dump_json, validate_tree, write_midi_files  # noqa: E402
 
 X_BODY = (
-    "Lo-Fi Mellow Keys: eight studies, gentle voicings, two variations each, "
-    "note-only MIDI, 60-90 BPM. The melodic answer is a separate reference. "
-    "Preview is a simple-synth render of study 01, not a master. "
-    "No listening audition was performed."
+    "Lo-Fi Mellow Keys: eight studies, 60-90 BPM, note-only MIDI. "
+    "Study 01 preview is 26.697 seconds. preview, not a master. "
+    "No human listening audition was performed for this build."
 )
 
 
@@ -126,7 +125,7 @@ The synth mapping is a sine plus a quiet triangle for the keys and a quieter sin
 
 Encoded MP3 settings: libmp3lame, 192 kbps. Film audio is AAC at 160 kbps re-encoded from that MP3, so the decoded film audio is not byte-identical to the MP3. Film duration probe: {film['duration_seconds']:.3f} seconds. {film['duration_relation']} The picture is a still illustration with rasterized disclosure text. DejaVu Sans Bold from the build machine supplies the glyphs. The font file is not in this pack.
 
-{AUDITION} A sample peak is recorded in the preview manifest. It is the peak of the integer mix. It is not a true-peak reading.
+{AUDITION} A sample peak is recorded in the preview manifest. It is the peak of the integer mix.
 
 ## Build
 
@@ -189,7 +188,7 @@ This file is a draft. It has not been posted.
 
 Caption
 
-Lo-Fi Mellow Keys. Eight 8-bar studies of gentle voicings. Two keys variations each, note-only MIDI between 60 and 90 BPM. Melodic answers are separate reference files. The audio preview is a simple-synth render of study 01, not a master. No listening audition was performed for this build.
+Lo-Fi Mellow Keys. Eight 8-bar studies of gentle voicings. Two keys variations each, note-only MIDI between 60 and 90 BPM. Melodic answers are separate reference files. The study 01 preview is 26.697 seconds. preview, not a master. No human listening audition was performed for this build.
 
 Hashtags
 
