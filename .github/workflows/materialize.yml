@@ -26,13 +26,34 @@ jobs:
         run: python3 tools/build_pack.py
       - name: Commit delivered files
         run: |
+          set +e
           git config user.name "mizcausevic-dev"
           git config user.email "mizcausevic-dev@users.noreply.github.com"
           git add -A
+          git status --short > /tmp/git-status.txt
           if git diff --cached --quiet; then
             echo "no file changes"
+            commit_code=0
           else
-            git commit -m "Materialize Lo-Fi Mellow Keys [skip ci]"
-            git push
+            git commit -m "Materialize Lo-Fi Mellow Keys [skip ci]" > /tmp/git-commit.txt 2>&1
+            commit_code=$?
           fi
-          git push origin HEAD:gh-pages
+          git push origin HEAD:main > /tmp/git-push-main.txt 2>&1
+          main_code=$?
+          git push origin HEAD:gh-pages > /tmp/git-push-pages.txt 2>&1
+          pages_code=$?
+          {
+            echo "commit_exit=$commit_code main_exit=$main_code pages_exit=$pages_code"
+            echo "STATUS"
+            cat /tmp/git-status.txt
+            echo "COMMIT"
+            cat /tmp/git-commit.txt 2>/dev/null
+            echo "MAIN"
+            cat /tmp/git-push-main.txt
+            echo "PAGES"
+            cat /tmp/git-push-pages.txt
+          } > /tmp/git-report.txt
+          if [ "$commit_code" -ne 0 ] || [ "$main_code" -ne 0 ] || [ "$pages_code" -ne 0 ]; then
+            echo "::error::$(tr '\n' ' ' < /tmp/git-report.txt | cut -c1-900)"
+            exit 1
+          fi
