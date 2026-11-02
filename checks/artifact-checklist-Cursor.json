@@ -13,7 +13,7 @@
       "status": "PASS"
     },
     {
-      "evidence": "/home/runner/work/lofi-mellow-keys/lofi-mellow-keys/preview/preview.mp3 duration 26.666667",
+      "evidence": "/home/runner/work/lofi-mellow-keys/lofi-mellow-keys/preview/preview.mp3 duration 26.697143",
       "mandatory": true,
       "name": "primary MP3 preview",
       "status": "PASS"
@@ -79,7 +79,7 @@
       "status": "PASS"
     },
     {
-      "evidence": "239 characters",
+      "evidence": "177 characters",
       "mandatory": true,
       "name": "X post draft under 280 characters",
       "status": "PASS"
