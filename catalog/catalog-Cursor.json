@@ -186,7 +186,7 @@
       "bars": 8,
       "bpm": 64,
       "change_bars": [1, 1, 1, 1, 1, 1, 1, 1],
-      "changes": ["Dadd9", "Gm7", "Bb", "Am7", "Dm", "Gm", "A or Am", "Dm"],
+      "changes": ["F A E", "Gm7", "Bb", "Am7", "Dm", "Gm", "A or Am", "Dm"],
       "collection_name": "D natural minor",
       "contour": [44, 48, 52, 56, 50, 54, 60, 66],
       "departures": ["Variation A bar 7 beat 2, tick 24000, uses C#4 (61) as a leading tone. It is outside D natural minor and is flagged. Variation B stays on C natural. No other study flags a departure."],
