@@ -1,0 +1,48 @@
+{
+  "commands": {
+    "card": [
+      "ffmpeg",
+      "-y",
+      "-i",
+      "/home/runner/work/lofi-mellow-keys/lofi-mellow-keys/art/hero.jpg",
+      "-vf",
+      "scale=1600:900",
+      "-q:v",
+      "3",
+      "/home/runner/work/lofi-mellow-keys/lofi-mellow-keys/social/x-Cursor/card.jpg"
+    ],
+    "portrait": [
+      "ffmpeg",
+      "-y",
+      "-i",
+      "/home/runner/work/lofi-mellow-keys/lofi-mellow-keys/art/square.jpg",
+      "-vf",
+      "crop=864:1080:108:0,scale=1080:1350",
+      "-q:v",
+      "3",
+      "/home/runner/work/lofi-mellow-keys/lofi-mellow-keys/social/instagram-Cursor/portrait.jpg"
+    ]
+  },
+  "hero": "JPEG of the 1280x720 wide framing of the paper-and-sage roll. The film plate is a JPEG of the same PPM, made before this final hero file was written.",
+  "instagram_portrait": "crop=864:1080:108:0 of the square still, then scale to 1080x1350.",
+  "instagram_square": "Byte copy of art/square.jpg.",
+  "instagram_square_sha256": "765a8ee00b17357dce3d6dad6f8da956ca3d840f7157f37b517954dbbf59ec47",
+  "painter": "tools/render_visual.py paint()",
+  "portrait_crop": "crop=864:1080:108:0 keeps a centered 80 percent of the square width and the full height, then scales to 1080x1350. The stills page draws that window on the square and explains the pixels beside it.",
+  "poster_command": [
+    "ffmpeg",
+    "-y",
+    "-i",
+    "/home/runner/work/lofi-mellow-keys/lofi-mellow-keys/art/hero.jpg",
+    "-vf",
+    "drawtext=textfile=/home/runner/work/lofi-mellow-keys/lofi-mellow-keys/build/onpicture.txt:fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:fontsize=48:fontcolor=white:x=(w-text_w)/2:y=h-100:box=1:boxcolor=black@0.68:boxborderw=22",
+    "-frames:v",
+    "1",
+    "-q:v",
+    "3",
+    "/home/runner/work/lofi-mellow-keys/lofi-mellow-keys/film/poster.jpg"
+  ],
+  "square": "JPEG of the 1080x1080 square framing of the same painter. Not a scale of the hero.",
+  "square_sha256": "765a8ee00b17357dce3d6dad6f8da956ca3d840f7157f37b517954dbbf59ec47",
+  "x_card": "scale the 1280x720 hero to 1600x900."
+}

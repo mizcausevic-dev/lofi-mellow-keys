@@ -1,0 +1,61 @@
+preview, not a master
+{
+  "arrangement_path": "midi/arrangement.mid",
+  "arrangement_sha256": "383fd230f5cabe01dea2ff4d431406b4b5fbd8415fb5f006b61601527668db3e",
+  "encode": "libmp3lame CBR 192 kbps, mono source",
+  "excerpt": {
+    "bars": "1-8, the full container",
+    "end_tick": 30720,
+    "sequencing": "keys and melodic answer, variation A, for the full 8 bars",
+    "start_tick": 0,
+    "study": "s01",
+    "transposition": "none"
+  },
+  "intermediate_wav": "build/preview.wav",
+  "intermediate_wav_note": "The WAV is gitignored build storage. The delivered preview is the MP3.",
+  "intermediate_wav_sha256": "9c3df30395e5458a58936ee042033da4cf914bcd513449f83c782ec4ba653bac",
+  "label": "preview, not a master",
+  "listening": "No human listening audition was performed for this build.",
+  "mapping": {
+    "keys": "sine plus a quiet triangle, 30 ms attack, held for the written duration",
+    "melodic-answer": "quieter sine, 45 ms attack, held for the written duration"
+  },
+  "mp3_encode_command": [
+    "ffmpeg",
+    "-y",
+    "-i",
+    "/home/runner/work/lofi-mellow-keys/lofi-mellow-keys/build/preview.wav",
+    "-codec:a",
+    "libmp3lame",
+    "-b:a",
+    "192k",
+    "/home/runner/work/lofi-mellow-keys/lofi-mellow-keys/preview/preview.mp3"
+  ],
+  "mp3_path": "preview/preview.mp3",
+  "mp3_sha256": "fed1e7d7120cb66655d3867e6d62e40831e36f1454f86a40f44a8d196695d864",
+  "pack_id": "lofi-mellow-keys",
+  "program_changes": "No program changes are encoded. A conventional GM player will normally use its default piano program for pitched channels unless configured otherwise; compatible GM channel 10 percussion is treated separately. Player behavior may vary.",
+  "renderer": "simple-synth-1.0.0",
+  "renderer_note": "These voices are preview mappings. They are not encoded in the MIDI file. Pitch instability, noise, saturation, and filtering are not applied.",
+  "rounding": "sample = floor(seconds * sample_rate + 0.5), computed from tick 0; intervals are not summed",
+  "sample_peak": 13832,
+  "sample_peak_dbfs": -7.491299093877036,
+  "sample_peak_note": "This is a sample peak of the integer mix after a linear scale. It is not a true-peak measurement and it is not an integrated loudness measurement.",
+  "score_seconds": 26.666656,
+  "score_sha256": "4f455a126fa251691482e17548f734d7884fdffa8521065e408d8b9eb89acd89",
+  "seconds_encoded": 26.666667,
+  "source_parts": [
+    {
+      "id": "s01.keys.a",
+      "path": "midi/s01-paper-window/keys-a.mid",
+      "sha256": "c12e21fcc19dcd2b829fd45b9e9636c7ac8a61c9d905e1501e24eabf306303c9"
+    },
+    {
+      "id": "s01.answer.a",
+      "path": "midi/s01-paper-window/answer-a.mid",
+      "sha256": "54c050189f24023f3189c6cb8e3ff4c324d108515372f3f08fa74d4449e6f3bc"
+    }
+  ],
+  "tempo_authority": "encoded MIDI tempo",
+  "tempo_us": 833333
+}
