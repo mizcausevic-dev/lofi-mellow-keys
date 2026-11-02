@@ -41,20 +41,13 @@ jobs:
             git push
             git push origin HEAD:gh-pages
           fi
-      - name: Point Pages at gh-pages when the token allows it
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          payload='{"source":{"branch":"gh-pages","path":"/"}}'
-          gh api --method POST "/repos/${{ github.repository }}/pages" --input - <<<"$payload" \
-            || gh api --method PUT "/repos/${{ github.repository }}/pages" --input - <<<"$payload" \
-            || echo "branch source was not accepted; the deploy step publishes the same tree"
-          gh api --method PUT "/repos/${{ github.repository }}/topics" --input - <<<'{"names":["midi","lofi","piano","music-production","composition"]}' || true
       - name: Prepare the Pages directory
         run: |
           mkdir -p "${{ runner.temp }}/site"
           git archive HEAD | tar -x -C "${{ runner.temp }}/site"
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ${{ runner.temp }}/site
