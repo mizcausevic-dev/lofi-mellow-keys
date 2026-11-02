@@ -1,6 +1,7 @@
-# One-shot installer. This run unpacks the verified generator and does not render media.
-# The restored guard reads tools/compose.py from the repository.
-# Do not unpack https://h.uguu.se/uCcAvwZO.tar.gz.
+# The previous materialize step unpacked https://h.uguu.se/uCcAvwZO.tar.gz
+# (sha256 dd27dc9627fd5c9a8e50b5bb65938816e869c7afe74c584b403d29ad1030b4f0).
+# That archive still emits Late Seventh, Cmaj7, and Dadd9. Do not unpack it.
+# tools/compose.py in this repository is the generator source.
 name: materialize
 
 on:
@@ -18,14 +19,48 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Install the verified generator without rendering media
+      - name: Use the generator committed in this repo
         run: |
-          set -euo pipefail
-          curl -fsSL -o /tmp/compose-install.tar.gz "https://d.uguu.se/UqMZrxgy.tar.gz"
-          echo "1857dd0a2934e737c1aae9f4f414cacfb6db1c01862132226d69a2000a8a527e  /tmp/compose-install.tar.gz" | sha256sum -c -
-          rm -rf /tmp/compose-src
-          mkdir -p /tmp/compose-src
-          tar -xzf /tmp/compose-install.tar.gz -C /tmp/compose-src
-          test -f /tmp/compose-src/install.sh
-          test -f /tmp/compose-src/tools/compose.py
-          bash /tmp/compose-src/install.sh
+          find . -type d -name __pycache__ -prune -exec rm -rf {} +
+          touch .nojekyll
+          grep -q 'Late Shells' tools/compose.py
+          grep -q 'bar 7 beat 2' tools/compose.py
+          grep -q 'F, A, and E' tools/compose.py
+          grep -q 'not a Cmaj7' tools/compose.py
+          if grep -q 'Dadd9' tools/compose.py; then echo "Dadd9 still in compose.py"; exit 1; fi
+          if grep -q 'title": "Late Seventh"' tools/compose.py; then echo "old Late Seventh title"; exit 1; fi
+          echo "generator source ok"
+      - name: Install media tools
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg fonts-dejavu-core
+      - name: Build pack
+        run: python3 tools/build_pack.py
+      - name: Commit delivered files
+        run: |
+          set +e
+          git config user.name "mizcausevic-dev"
+          git config user.email "mizcausevic-dev@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "no file changes"
+            commit_code=0
+          else
+            git commit -m "Materialize Lo-Fi Mellow Keys [skip ci]" > /tmp/git-commit.txt 2>&1
+            commit_code=$?
+          fi
+          git push origin HEAD:main > /tmp/git-push-main.txt 2>&1
+          main_code=$?
+          git push origin HEAD:gh-pages > /tmp/git-push-pages.txt 2>&1
+          pages_code=$?
+          {
+            echo "commit_exit=$commit_code main_exit=$main_code pages_exit=$pages_code"
+            echo "COMMIT"
+            cat /tmp/git-commit.txt 2>/dev/null
+            echo "MAIN"
+            cat /tmp/git-push-main.txt
+            echo "PAGES"
+            cat /tmp/git-push-pages.txt
+          } > /tmp/git-report.txt
+          if [ "$commit_code" -ne 0 ] || [ "$main_code" -ne 0 ] || [ "$pages_code" -ne 0 ]; then
+            echo "::error::$(tr '\n' ' ' < /tmp/git-report.txt | cut -c1-900)"
+            exit 1
+          fi
