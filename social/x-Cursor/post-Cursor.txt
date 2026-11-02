@@ -2,4 +2,4 @@ DRAFT
 This label is not the post body.
 
 POST BODY
-Lo-Fi Mellow Keys: eight studies, 60-90 BPM, note-only MIDI. Study 01 preview is 26.697 seconds. preview, not a master. No human listening audition was performed for this build.
+Lo-Fi Mellow Keys: eight studies, gentle voicings, two variations each, note-only MIDI, 60-90 BPM. The melodic answer is a separate reference. Preview is a simple-synth render of study 01, not a master. No listening audition was performed.

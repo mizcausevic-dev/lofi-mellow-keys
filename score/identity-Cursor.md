@@ -8,9 +8,9 @@ Variation A sits on beat 1. The first chord is four notes, then three. Bars 4 to
 
 Limitations: Pair keys A with answer A, and keys B with answer B. The answer is a reference file. It is not inside the keys file.
 
-## s02 Late Shells
+## s02 Late Seventh
 
-Variation A enters on the and of 1 and holds for two beats, longer on the last bar. Variation B is on the downbeat and lasts a dotted eighth. Variation B does not put a seventh on top.
+Variation A enters on the and of 1 and holds for two beats, longer on the last bar. Variation B is on the downbeat, a dotted eighth, with the seventh on top.
 
 Limitations: The answer plays only four notes in A and two in B. Silence is the rest of the line.
 
@@ -28,7 +28,7 @@ Limitations: The C# is one chord tone in keys A. It is not a new key, and it is 
 
 ## s05 Suspended Room
 
-Variation A arrives on beat 3 and lets the third in at bar 4. Variation B is a two-note shell on the downbeat. It states major thirds on D F# and on G B, so those two shells are not suspended.
+Variation A arrives on beat 3 and lets the third in at bar 4. Variation B is a two-note sus shell on the downbeat and never states the third.
 
 Limitations: C# in variation A is inside A mixolydian. It is not a departure. Variation B has no C#.
 

@@ -11,7 +11,7 @@ This repository is the pack. The GitHub repository is https://github.com/mizcaus
 - `midi/arrangement.mid` is a Format 1 preview arrangement of study 01, variation A: keys and melodic answer.
 - Individual Format 0 parts live under `midi/`.
 - `midi/validation-Cursor.json` is the report from reopening those exact bytes.
-- `preview/preview.mp3` is the primary music preview. It is 26.697 seconds in the encoded file. preview, not a master.
+- `preview/preview.mp3` is the primary music preview. It is 26.667 seconds in the encoded file. preview, not a master.
 - `film/preview.mp4` and `film/preview.vtt` are the film. On-picture and caption text is `preview, not master`.
 - `art/hero.jpg` is a 1280x720 illustration. `art/square.jpg` is 1080x1080. Neither is a photograph.
 
@@ -20,7 +20,7 @@ Use either the combined arrangement or the separate parts. Do not stack the part
 ## Studies
 
 - s01 Paper Window: 72 BPM, 8 bars, C major, tonic reference C.
-- s02 Late Shells: 66 BPM, 8 bars, F major, tonic reference F.
+- s02 Late Seventh: 66 BPM, 8 bars, F major, tonic reference F.
 - s03 Open Fifths: 80 BPM, 8 bars, G major, tonic reference G.
 - s04 Minor Ninth: 64 BPM, 8 bars, D natural minor, tonic reference D.
 - s05 Suspended Room: 76 BPM, 8 bars, A mixolydian, tonic reference A.
@@ -42,9 +42,9 @@ The preview renders the canonical notes for `s01.keys.a` and `s01.answer.a` with
 
 The synth mapping is a sine plus a quiet triangle for the keys and a quieter sine for the answer. No program changes are encoded. A conventional GM player will normally use its default piano program for pitched channels unless configured otherwise; compatible GM channel 10 percussion is treated separately. Player behavior may vary. The mapping is not encoded in the MIDI.
 
-Encoded MP3 settings: libmp3lame, 192 kbps. Film audio is AAC at 160 kbps re-encoded from that MP3, so the decoded film audio is not byte-identical to the MP3. Film duration probe: 26.667 seconds. MP3 container probe 26.697 seconds. MP4 probe 26.667 seconds. The film ends on a video frame, so it is slightly shorter than the MP3 container. The music is the same preview, not a different excerpt. The picture is a still illustration with rasterized disclosure text. DejaVu Sans Bold from the build machine supplies the glyphs. The font file is not in this pack.
+Encoded MP3 settings: libmp3lame, 192 kbps. Film audio is AAC at 160 kbps re-encoded from that MP3, so the decoded film audio is not byte-identical to the MP3. Film duration probe: 26.667 seconds. MP3 container probe 26.667 seconds. MP4 probe 26.667 seconds. The film ends on a video frame, so it is slightly shorter than the MP3 container. The music is the same preview, not a different excerpt. The picture is a still illustration with rasterized disclosure text. DejaVu Sans Bold from the build machine supplies the glyphs. The font file is not in this pack.
 
-No human listening audition was performed for this build. A sample peak is recorded in the preview manifest. It is the peak of the integer mix.
+No human listening audition was performed for this build. A sample peak is recorded in the preview manifest. It is the peak of the integer mix. It is not a true-peak reading.
 
 ## Build
 

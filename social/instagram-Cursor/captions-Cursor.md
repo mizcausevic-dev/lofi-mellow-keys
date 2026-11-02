@@ -3,7 +3,7 @@ This file is a draft. It has not been posted.
 
 Caption
 
-Lo-Fi Mellow Keys. Eight 8-bar studies of gentle voicings. Two keys variations each, note-only MIDI between 60 and 90 BPM. Melodic answers are separate reference files. The study 01 preview is 26.697 seconds. preview, not a master. No human listening audition was performed for this build.
+Lo-Fi Mellow Keys. Eight 8-bar studies of gentle voicings. Two keys variations each, note-only MIDI between 60 and 90 BPM. Melodic answers are separate reference files. The audio preview is a simple-synth render of study 01, not a master. No listening audition was performed for this build.
 
 Hashtags
 
