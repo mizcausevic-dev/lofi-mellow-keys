@@ -106,3 +106,68 @@ class Part:
             "tempo_us": self.study["tempo_us"],
             "notes": ordered,
         }
+
+
+def keys(study, variation):
+    return Part(
+        study, f"{study['id']}.keys.{variation}", "keys", variation, True, 0,
+        f"keys-{variation}", False, 4, 48, 76,
+    )
+
+
+def answer(study, variation):
+    return Part(
+        study, f"{study['id']}.answer.{variation}", "melodic-answer", variation, False, 1,
+        f"answer-{variation}", True, 1, 60, 81,
+    )
+
+
+def _pair(study):
+    return keys(study, "a"), keys(study, "b"), answer(study, "a"), answer(study, "b")
+
+
+def voicing(part, bar_index, beat, duration, pitches, departures=()):
+    nominal = bar_index * BAR + beat
+    ordered = sorted(pitches)
+    count = len(ordered)
+    outside = set(departures)
+    for index, pitch in enumerate(ordered):
+        offset = (count - 1 - index) * ROLL
+        velocity = part.study["contour"][bar_index] + (8 if index == count - 1 else 0)
+        part.add(nominal, duration, pitch, velocity, offset, (pitch % 12) in outside)
+
+
+def line(part, events):
+    for bar_index, beat, duration, pitch, velocity in events:
+        part.add(bar_index * BAR + beat, duration, pitch, velocity, 0, False)
+
+
+def _s01(study):
+    a, b, aa, bb = _pair(study)
+    plan_a = [
+        (0, 0, 2400, (52, 55, 59, 62)),
+        (1, 0, 2400, (52, 55, 60)),
+        (2, 0, 2400, (53, 57, 60)),
+        (3, 0, 2400, (53, 55, 59)),
+        (4, 0, 1680, (52, 59, 64)),
+        (5, 0, 1680, (52, 57, 60)),
+        (6, 0, 1680, (53, 57, 62)),
+        (7, 0, 3000, (52, 55, 60)),
+    ]
+    plan_b = [
+        (0, 960, 960, (55, 59, 62)),
+        (1, 960, 960, (55, 60, 64)),
+        (2, 960, 960, (57, 60, 64)),
+        (3, 960, 960, (55, 59, 65)),
+        (4, 960, 960, (59, 64, 67)),
+        (5, 960, 960, (57, 60, 67)),
+        (6, 960, 960, (57, 62, 65)),
+        (7, 960, 960, (55, 60, 64)),
+    ]
+    for bar_index, beat, duration, pitches in plan_a:
+        voicing(a, bar_index, beat, duration, pitches)
+    for bar_index, beat, duration, pitches in plan_b:
+        voicing(b, bar_index, beat, duration, pitches)
+    line(aa, [(0, 1920, 720, 67, 46), (2, 1920, 720, 69, 50), (4, 1920, 720, 67, 48), (6, 1920, 720, 64, 52)])
+    line(bb, [(1, 2880, 360, 72, 44), (3, 2880, 360, 71, 46), (5, 2880, 360, 69, 48), (7, 2880, 360, 67, 50)])
+    return [a, b, aa, bb]
