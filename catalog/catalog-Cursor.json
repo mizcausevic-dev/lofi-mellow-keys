@@ -1,1 +1,20 @@
-PLACEHOLDER_WILL_NOT_SEND
+{
+  "arrangement": {
+    "bpm": 72,
+    "container_ticks": 30720,
+    "description": "Study 01 variation A keys with melodic answer A. The answer is not inside the keys file.",
+    "format": 1,
+    "id": "arrangement-preview-s01a",
+    "meter": "4/4",
+    "path": "midi/arrangement.mid",
+    "tempo_us": 833333,
+    "tracks": [
+      {"channel": null, "name": "Conductor", "source_part": null},
+      {"channel": 0, "name": "Keys", "source_part": "s01.keys.a"},
+      {"channel": 1, "name": "Melodic Answer", "source_part": "s01.answer.a"}
+    ]
+  },
+  "pack_id": "lofi-mellow-keys",
+  "pack_name": "Lo-Fi Mellow Keys",
+  "note": "full file follows in next commit if this marker is seen"
+}
